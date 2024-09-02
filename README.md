@@ -6,8 +6,8 @@ A real-time audio streaming server with support for multiple channels, and a bui
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/server_project.git
-   cd server_project
+   git clone git@github.com:elimelt/audio-streaming-server.git
+   cd audio-streaming-server
    ```
 
 2. Create a virtual environment and activate it:
