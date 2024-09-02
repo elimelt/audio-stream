@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Streaming - Channel {{ channel_id }}</title>
+    <link rel="stylesheet" href="{{ url('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Audio Streaming - Channel {{ channel_id }}</h1>
+    <button id="startProduceBtn">Start Producing</button>
+    <button id="stopProduceBtn" disabled>Stop Producing</button>
+    <button id="startConsumeBtn">Start Consuming</button>
+    <button id="stopConsumeBtn" disabled>Stop Consuming</button>
+    <script src="{{ url('static', filename='js/client.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host Receiver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        .input-group {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        .mic-icon {
+            font-size: 3rem;
+            margin: 1rem 0;
+        }
+        .capture-text {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>host receiver</h1>
+        <div class="input-group">
+            <input type="text" id="urlInput" placeholder="ws://" value="ws://localhost:8080">
+            <button id="connectBtn">Connect</button>
+        </div>
+        <div class="mic-icon">🎤</div>
+        <p class="capture-text" id="captureStatus">enable capture</p>
+    </div>
+
+    <script src="audioProcessor.js"></script>
+</body>
+</html>
