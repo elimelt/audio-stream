@@ -2,12 +2,45 @@ const channelId = window.location.pathname.split('/')[2];
 let produceSocket, consumeSocket;
 let audioContext, mediaStream;
 
+document.getElementById('connectBtn').onclick = connectToChannel;
+
+async function connectToChannel() {
+    const channelId = document.getElementById('channelInput').value;
+    if (!channelId) {
+        alert('Please enter a channel ID');
+        return;
+    }
+
+    document.getElementById('channelIdDisplay').innerText = channelId;
+
+    document.getElementById('startProduceBtn').onclick = () => startProduce(channelId);
+    document.getElementById('stopProduceBtn').onclick = stopProduce;
+    document.getElementById('startConsumeBtn').onclick = () => startConsume(channelId);
+    document.getElementById('stopConsumeBtn').onclick = stopConsume;
+
+    // Fetch available channels and update the UI
+    await fetchAvailableChannels();
+}
+
+async function fetchAvailableChannels() {
+    const response = await fetch('/channels');
+    const data = await response.json();
+    const channelsList = document.getElementById('channelsList');
+    channelsList.innerHTML = '';
+    data.channels.forEach(channel => {
+        const listItem = document.createElement('li');
+        listItem.innerText = channel;
+        channelsList.appendChild(listItem);
+    });
+}
+
+
 document.getElementById('startProduceBtn').onclick = startProduce;
 document.getElementById('stopProduceBtn').onclick = stopProduce;
 document.getElementById('startConsumeBtn').onclick = startConsume;
 document.getElementById('stopConsumeBtn').onclick = stopConsume;
 
-async function startProduce() {
+async function startProduce(channelId) {
     try {
         produceSocket = new WebSocket(`wss://${location.host}/channel/${channelId}/produce`);
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -43,7 +76,7 @@ function stopProduce() {
     document.getElementById('stopProduceBtn').disabled = true;
 }
 
-async function startConsume() {
+async function startConsume(channelId) {
     try {
         consumeSocket = new WebSocket(`wss://${location.host}/channel/${channelId}/consume`);
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -73,4 +106,16 @@ function stopConsume() {
     }
     document.getElementById('startConsumeBtn').disabled = false;
     document.getElementById('stopConsumeBtn').disabled = true;
+}
+
+async function fetchAvailableChannels() {
+    const response = await fetch('/channels');
+    const data = await response.json();
+    const channelsList = document.getElementById('channelsList');
+    channelsList.innerHTML = '';
+    data.channels.forEach(channel => {
+        const listItem = document.createElement('li');
+        listItem.innerText = channel;
+        channelsList.appendChild(listItem);
+    });
 }

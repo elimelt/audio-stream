@@ -51,17 +51,11 @@ async def produce(request):
     return ws
 
 
-async def get_metrics(request):
-    metrics = {
-        "total_channels": len(channels),
-        "total_consumers": sum(len(consumers) for consumers in channel_consumers.values()),
-        "channels": {
-            channel_id: {
-                "consumer_count": len(channel_consumers[channel_id]),
-                "message_count": len(channels[channel_id])
-            }
-            for channel_id in channels
-        }
-    }
-    logger.info("Metrics requested")
-    return web.json_response(metrics)
+async def list_channels(request):
+    return web.json_response({'channels': list(channels.keys())})
+
+async def metrics(request):
+    return web.json_response({
+        'active_channels': len(channels),
+        'active_consumers': sum(len(consumers) for consumers in channel_consumers.values())
+    })
