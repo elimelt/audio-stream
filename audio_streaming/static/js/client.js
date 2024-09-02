@@ -9,7 +9,7 @@ document.getElementById('stopConsumeBtn').onclick = stopConsume;
 
 async function startProduce() {
     try {
-        produceSocket = new WebSocket(`ws://${location.host}/channel/${channelId}/produce`);
+        produceSocket = new WebSocket(`wss://${location.host}/channel/${channelId}/produce`);
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
         mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
         const source = audioContext.createMediaStreamSource(mediaStream);
@@ -45,7 +45,7 @@ function stopProduce() {
 
 async function startConsume() {
     try {
-        consumeSocket = new WebSocket(`ws://${location.host}/channel/${channelId}/consume`);
+        consumeSocket = new WebSocket(`wss://${location.host}/channel/${channelId}/consume`);
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
         consumeSocket.binaryType = 'arraybuffer';
         consumeSocket.onmessage = (event) => {
