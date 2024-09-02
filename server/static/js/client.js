@@ -3,6 +3,7 @@ let produceSocket, consumeSocket;
 let audioContext, mediaStream;
 
 document.getElementById('connectBtn').onclick = connectToChannel;
+document.getElementById('refreshChannelsBtn').onclick = fetchAvailableChannels;
 
 async function connectToChannel() {
     const channelId = document.getElementById('channelInput').value;
@@ -17,9 +18,6 @@ async function connectToChannel() {
     document.getElementById('stopProduceBtn').onclick = stopProduce;
     document.getElementById('startConsumeBtn').onclick = () => startConsume(channelId);
     document.getElementById('stopConsumeBtn').onclick = stopConsume;
-
-    // Fetch available channels and update the UI
-    await fetchAvailableChannels();
 }
 
 async function fetchAvailableChannels() {
