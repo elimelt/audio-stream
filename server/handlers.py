@@ -18,7 +18,6 @@ async def index(request):
 async def consume(request):
     channel_id = request.match_info['channel_id']
     ip = request.remote
-    logger.info(f"New consumer connected to channel {channel_id} from {ip}")
     ws = web.WebSocketResponse()
     await ws.prepare(request)
     channel_consumers[channel_id].add(ws)
@@ -40,7 +39,6 @@ async def produce(request):
     try:
         async for msg in ws:
             if msg.type == aiohttp.WSMsgType.BINARY:
-                logger.info(f"Received binary message on channel {channel_id} from {ip}")
                 channels[channel_id].append(msg.data)
                 for consumer in channel_consumers[channel_id]:
                     await consumer.send_bytes(msg.data)
