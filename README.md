@@ -1,6 +1,8 @@
 # Audio Streaming Server
 
-A real-time audio streaming server with support for multiple channels, and a built-in client
+A real-time audio streaming server with support for multiple channels, and a built-in client. 
+
+You can effectively call people through your browser! Simply connect to the same channel and enable production and consumption.
 
 ## Setup
 
