@@ -2,8 +2,8 @@ from aiohttp import web
 import aiohttp_jinja2
 import jinja2
 import os
-from audio_streaming.routes import setup_routes
-from audio_streaming.config import Config
+from server.routes import setup_routes
+from server.config import Config
 
 def create_app():
     app = web.Application()

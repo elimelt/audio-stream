@@ -1,4 +1,4 @@
-from audio_streaming.handlers import index, consume, produce
+from server.handlers import index, consume, produce
 
 def setup_routes(app):
     app.router.add_get('/channel/{channel_id}/index.html', index)

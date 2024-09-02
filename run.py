@@ -1,4 +1,4 @@
-from audio_streaming.main import create_app
+from server.main import create_app
 from aiohttp import web
 from aiohttp.web import Application
 import ssl

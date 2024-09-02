@@ -6,5 +6,5 @@ class Config:
     HOST = '0.0.0.0'
     PORT = 8080
     BASE_DIR = BASE_DIR
-    STATIC_ROOT = BASE_DIR / 'audio_streaming' / 'static'
+    STATIC_ROOT = BASE_DIR / 'server' / 'static'
     TEMPLATE_ROOT = BASE_DIR / 'templates'

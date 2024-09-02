@@ -6,8 +6,8 @@ This project implements a real-time audio streaming server with support for mult
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/audio_streaming_project.git
-   cd audio_streaming_project
+   git clone https://github.com/yourusername/server_project.git
+   cd server_project
    ```
 
 2. Create a virtual environment and activate it:
@@ -41,7 +41,7 @@ The server will start on `http://localhost:8080`.
 ## Project Structure
 
 - `run.py`: Entry point for running the server
-- `audio_streaming/`: Main package containing the application code
+- `server/`: Main package containing the application code
   - `main.py`: Application factory and configuration
   - `routes.py`: URL routes definition
   - `handlers.py`: Request handlers
